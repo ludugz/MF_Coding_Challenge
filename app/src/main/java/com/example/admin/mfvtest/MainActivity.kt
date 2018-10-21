@@ -2,7 +2,6 @@ package com.example.admin.mfvtest
 
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import android.widget.AdapterView
 import android.widget.ListView
@@ -20,7 +19,7 @@ class MainActivity : AppCompatActivity(), AdapterView.OnItemClickListener {
 
     internal lateinit var jsonAPI: IMyAPI
     var compositeDisposable: CompositeDisposable = CompositeDisposable()
-    var articleList: List<Article> = ArrayList()
+    var articleContentList: MutableList<ArticleContent> = mutableListOf()
     lateinit var mListView: ListView
     lateinit var mArrayAdapter: ListViewAdapter
 
@@ -28,7 +27,6 @@ class MainActivity : AppCompatActivity(), AdapterView.OnItemClickListener {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         mListView = findViewById<ListView>(R.id.list_view)
-        initView()
 //        initRetrofit()
         initApi()
     }
@@ -39,18 +37,20 @@ class MainActivity : AppCompatActivity(), AdapterView.OnItemClickListener {
         compositeDisposable.add(jsonAPI.getArticle()
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe { article -> displayData(article) }
+                .subscribe { article -> fetchData(article) }
         )
     }
 
 
-    fun displayData(article: Article?) {
-        Log.i("tntan", article.toString())
+    fun fetchData(article: Article) {
+        articleContentList.clear()
+        articleContentList = article.articles
+        initView()
         mArrayAdapter.notifyDataSetChanged()
     }
 
     fun initView() {
-        mArrayAdapter = ListViewAdapter(this, articleList)
+        mArrayAdapter = ListViewAdapter(this, articleContentList)
         mListView.adapter = mArrayAdapter
         mListView.setOnItemClickListener(this)
     }
@@ -58,20 +58,6 @@ class MainActivity : AppCompatActivity(), AdapterView.OnItemClickListener {
     override fun onItemClick(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
         Toast.makeText(this, "abc", Toast.LENGTH_SHORT).show()
     }
-
-
-//    fun initRetrofit(){
-//        val retrofit = Retrofit.Builder().addConverterFactory(GsonConverterFactory.create())
-//                .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
-//                .baseUrl("https://moneyforwardvietnam.github.io/")
-//                .build()
-//        val api = retrofit.create(IMyAPI::class.java)
-//        val response = api.getArticles()
-//        response.observeOn(IoScheduler()).subscribeOn(AndroidSchedulers.mainThread())
-//                .subscribe(
-//                        // WE GET API RESPONSE HERE
-//                )
-//    }
 
 
 }

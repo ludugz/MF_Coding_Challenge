@@ -6,6 +6,6 @@ package com.example.admin.mfvtest.Model
 
 
 data class Article(
-        var articles: ArrayList<ArticleContent>
+        var articles: MutableList<ArticleContent>
 )
 
