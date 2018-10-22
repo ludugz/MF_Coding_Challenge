@@ -5,8 +5,10 @@ import android.content.Intent
 import android.os.Bundle
 import android.support.v4.app.ActivityOptionsCompat
 import android.support.v7.app.AppCompatActivity
+import android.view.MotionEvent
 import android.view.View
 import android.widget.AdapterView
+import android.widget.ArrayAdapter
 import android.widget.ImageView
 import android.widget.ListView
 import com.example.admin.mfvtest.Adapter.ListViewAdapter
@@ -19,9 +21,11 @@ import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.schedulers.Schedulers
 
+/**
+ * Created by TRUONG NHAT TAN on 10/19/2018.
+ */
 
-class MainActivity : AppCompatActivity(), AdapterView.OnItemClickListener {
-
+class MainActivity : AppCompatActivity(), AdapterView.OnItemClickListener{
     internal lateinit var jsonAPI: IMyAPI
     private var compositeDisposable: CompositeDisposable = CompositeDisposable()
     private var articleContentList: MutableList<ArticleContent> = mutableListOf()
@@ -69,5 +73,7 @@ class MainActivity : AppCompatActivity(), AdapterView.OnItemClickListener {
     override fun onItemClick(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
         launchNextScreen(this, articleContentList[position], view)
     }
+
+
 
 }

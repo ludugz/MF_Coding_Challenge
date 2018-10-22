@@ -8,9 +8,8 @@ import com.bumptech.glide.request.RequestOptions
 import com.example.admin.mfvtest.R
 
 /**
- * Created by admin on 10/20/2018.
+ * Created by TRUONG NHAT TAN on 10/20/2018.
  */
-
 
  class GlideHelper {
     companion object {

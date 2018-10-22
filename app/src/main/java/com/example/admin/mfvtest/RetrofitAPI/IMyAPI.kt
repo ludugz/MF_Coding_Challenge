@@ -5,7 +5,7 @@ import io.reactivex.Observable
 import retrofit2.http.GET
 
 /**
- * Created by admin on 10/19/2018.
+ * Created by TRUONG NHAT TAN on 10/19/2018.
  */
 interface IMyAPI {
     //    fun getArticles(): Observable<Article>

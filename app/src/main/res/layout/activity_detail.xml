@@ -22,6 +22,7 @@
         android:layout_below="@id/image_view_description"
         android:layout_centerHorizontal="true"
         android:textSize="12dp"
+        android:scrollbars="vertical"
         tools:text="@string/app_name"
         android:layout_marginLeft="25dp"
         android:layout_marginRight="25dp"

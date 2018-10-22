@@ -5,7 +5,7 @@ import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
 
 /**
- * Created by admin on 10/19/2018.
+ * Created by TRUONG NHAT TAN on 10/19/2018.
  */
 
 
