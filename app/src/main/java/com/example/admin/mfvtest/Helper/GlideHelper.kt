@@ -15,7 +15,7 @@ import com.example.admin.mfvtest.R
  class GlideHelper {
     companion object {
         private val FIT_SCALE_SIZE_DOWNLOADER = 800
-        private val FIT_DURATION_TRANSITION = 800
+        private val FIT_DURATION_TRANSITION = 1500
         private var requestOption: RequestOptions = RequestOptions()
         fun loadUrl(context: Context, imageView: ImageView, path: String) {
             Glide.with(context)
@@ -23,7 +23,6 @@ import com.example.admin.mfvtest.R
                     .apply(requestOption
                             .fitCenter()
                             .circleCrop()
-//                            .centerCrop()
                             .override(FIT_SCALE_SIZE_DOWNLOADER,FIT_SCALE_SIZE_DOWNLOADER)
                             .placeholder(R.drawable.shape_loading)
                             .error(R.color.color_no_image))

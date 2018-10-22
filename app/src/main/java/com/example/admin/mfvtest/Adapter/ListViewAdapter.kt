@@ -8,7 +8,6 @@ import android.widget.BaseAdapter
 import android.widget.ImageView
 import android.widget.TextView
 import com.example.admin.mfvtest.Helper.GlideHelper
-import com.example.admin.mfvtest.Model.Article
 import com.example.admin.mfvtest.Model.ArticleContent
 import com.example.admin.mfvtest.R
 
@@ -21,8 +20,8 @@ class ListViewAdapter (var context: Context, var article : MutableList<ArticleCo
     override fun getView(position: Int, convertView: View?, viewGroup: ViewGroup?): View {
         var layoutInflater = LayoutInflater.from(context)
         var view = layoutInflater.inflate(R.layout.article_item_list,viewGroup,false);
-        var title = view.findViewById<TextView>(R.id.text_view_title)
-        var description = view.findViewById<TextView>(R.id.text_view_description)
+        var title = view.findViewById<TextView>(R.id.text_view_title_item)
+        var description = view.findViewById<TextView>(R.id.text_view_description_item)
         var image = view.findViewById<ImageView>(R.id.image_view_item)
         title.text = article[position].title
         description.text = article[position].description
